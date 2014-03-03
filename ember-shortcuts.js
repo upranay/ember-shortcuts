@@ -146,23 +146,23 @@
 
     enable: function() { ENABLED = true; },
     disable: function() { ENABLED = false; },
-    unbind: Ember.K,
     filters: [targetIsNotInput],
 
     init: function() {
       var router = this.container.lookup('router:main').router;
       var dispatch = makeDispatch(router, this.get('filters'));
 
-      $doc.on('keydown', dispatch);
-      $doc.on('keyup', clear);
-      $win.on('focus', reset);
+      $doc.on('keydown.ember-shortcuts', dispatch);
+      $doc.on('keyup.ember-shortcuts', clear);
+      $win.on('focus.ember-shortcuts', reset);
       this.enable();
 
-      this.unbind = function() {
-        $doc.off('keydown', dispatch);
-        $doc.off('keyup', clear);
-        $win.off('focus', reset);
-      };
+    },
+
+    unbind: function() {
+      $doc.off('keydown.ember-shortcuts');
+      $doc.off('keyup.ember-shortcuts');
+      $win.off('focus.ember-shortcuts');
     },
 
     destroy: function() {
