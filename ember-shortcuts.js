@@ -166,6 +166,7 @@
     },
 
     destroy: function() {
+      SHORTCUTS = {};
       this.unbind();
     }
   });
