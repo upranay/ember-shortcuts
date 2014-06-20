@@ -43,8 +43,8 @@
 
   function updatePressedMods(event, kc) {
     if (event.shiftKey) PRESSED_MODS[16] = true;
-    if (event.altKey)   PRESSED_MODS[17] = true;
-    if (event.ctrlKey)  PRESSED_MODS[18] = true;
+    if (event.ctrlKey)  PRESSED_MODS[17] = true;
+    if (event.altKey)   PRESSED_MODS[18] = true;
     if (event.metaKey)  PRESSED_MODS[91] = true;
   }
 
