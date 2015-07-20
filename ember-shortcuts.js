@@ -1,4 +1,6 @@
 ;(function(Ember, $) {
+  var objectKeys = Object.keys || Ember.keys;
+
   var MODIFIERS = {
     '⇧': 16, shift: 16,
     '⌥': 18, alt: 18, option: 18,
@@ -174,7 +176,7 @@
   Ember.Route.reopen({
     mergedProperties: ['shortcuts'],
     registerShortcuts: function() {
-      if (this.shortcuts) register(Ember.keys(this.shortcuts));
+      if (this.shortcuts) register(objectKeys(this.shortcuts));
     }.on('init')
   });
 
