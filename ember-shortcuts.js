@@ -34,9 +34,13 @@
   var PRESSED_MODS = {};
   var SHORTCUTS = {};
 
-  // Normalize keyCode for ⌘
   function normalize(kc) {
-    return (kc === 93 || kc === 224) ? 91 : kc;
+    switch (kc) {
+      case 93: case 224: return 91; // Firefox does ⌘  weird
+      case 61: return 187;          // and `=`
+      case 173: return 189;         // and `-`
+      default: return kc;
+    }
   }
 
   function isMod(kc) {
