@@ -54,7 +54,11 @@
     if (event.metaKey)  PRESSED_MODS[91] = true;
   }
 
-  var forEach = Ember.EnumerableUtils.forEach;
+  function forEach(array, fn) {
+    for (var i = 0, len = array.length; i < len; i++) {
+      fn(array[i]);
+    }
+  }
 
   function makeDispatch(router, filters) {
     function triggerShortcut(def, event) {
