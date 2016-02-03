@@ -159,8 +159,9 @@
     filters: [targetIsNotInput],
 
     init: function() {
-      var router = this.container.lookup('router:main').router;
-      var dispatch = makeDispatch(router, this.get('filters'));
+      var router = this.get('router');
+      var filters = this.get('filters');
+      var dispatch = makeDispatch(router, filters);
 
       $doc.on('keydown.ember-shortcuts', dispatch);
       $doc.on('keyup.ember-shortcuts', clear);
@@ -168,6 +169,13 @@
       this.enable();
 
     },
+
+    router: Ember.computed(function() {
+      var path = 'router:main';
+      return Ember.getOwner
+        ? Ember.getOwner(this).lookup(path).router
+        : this.container.lookup(path).router;
+    }),
 
     unbind: function() {
       $doc.off('keydown.ember-shortcuts');
