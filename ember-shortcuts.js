@@ -204,6 +204,7 @@
         application.register('shortcuts:main', Ember.Shortcuts);
         application.inject('route', 'shortcuts', 'shortcuts:main');
         application.inject('controller', 'shortcuts', 'shortcuts:main');
+        application.inject('component', 'shortcuts', 'shortcuts:main');
       }
     });
   });
